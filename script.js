@@ -63,3 +63,22 @@ function ubahTeks() {
   }
 
   hitungLuasPersegi()
+
+  // bilangan desimal binary octal dan hexadesimal
+  let decimalNumber = 42;
+  let binaryNumber = 0b101010; // Binary representation of 42
+  let octalNumber = 0o52;    // Octal representation of 42 (deprecated in strict mode)
+  let hexadecimalNumber = 0x2A; // Hexadecimal representation of 42
+
+  console.log(decimalNumber);     // Output: 42
+  console.log(binaryNumber);      // Output: 42
+  console.log(octalNumber);       // Output: 42
+  console.log(hexadecimalNumber);  // Output: 42
+
+  // infinity special number
+  let notANumber = 0 / 0;
+  let infinity = 1 / 0;
+
+  console.log(infinity);
+  console.log(Number.isNaN(notANumber));
+
