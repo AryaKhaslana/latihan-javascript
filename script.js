@@ -113,4 +113,21 @@ function ubahTeks() {
   console.log(myString.includes("Hello"));     // Output: true
   console.log(myString.split(","));          // Output: [ '  Hello', ' World!  ' ]
 
-  
+  // booleans
+  let isTrue = true;
+  let isFalse = false;
+
+  console.log(isTrue);    // Output: true
+  console.log(isFalse);   // Output: false
+
+  console.log(Boolean(true));       // Output: true
+  console.log(Boolean(false));      // Output: false
+  console.log(Boolean("hello"));     // Output: true (truthy)
+  console.log(Boolean(""));          // Output: false (falsy)
+  console.log(Boolean(1));          // Output: true (truthy)
+  console.log(Boolean(0));          // Output: false (falsy)
+  console.log(Boolean(null));       // Output: false (falsy)
+  console.log(Boolean(undefined));  // Output: false (falsy)
+  console.log(Boolean(NaN));        // Output: false (falsy)
+  console.log(Boolean({}));         // Output: true (truthy) - even an empty object is truthy
+  console.log(Boolean([]));         // Output: true (truthy) - even an empty array is truthy
