@@ -82,3 +82,35 @@ function ubahTeks() {
   console.log(infinity);
   console.log(Number.isNaN(notANumber));
 
+  // belajar max value min value
+  console.log(Number.MAX_VALUE)
+  console.log(Number.NaN)
+
+  // belajar string bolo
+  let singleQuotedString = 'Hello, world!';
+  let doubleQuotedString = "This is a string.";
+  let backtickString = `This is also a string.`;
+
+  console.log(singleQuotedString);   // Output: Hello, world!
+  console.log(doubleQuotedString);   // Output: This is a string.
+  console.log(backtickString);       // Output: This is also a string.
+
+  // String Properties and Methods
+  let myString = "  Hello, World!  ";
+
+  console.log(myString.length);             // Output: 17
+  console.log(myString.charAt(0));          // Output: " "
+  console.log(myString.substring(2, 7));     // Output: "Hello"
+  console.log(myString.slice(2, 7));         // Output: "Hello"
+  console.log(myString.toUpperCase());       // Output: "  HELLO, WORLD!  "
+  console.log(myString.toLowerCase());       // Output: "  hello, world!  "
+  console.log(myString.indexOf("World"));    // Output: 9
+  console.log(myString.lastIndexOf("o"));    // Output: 10
+  console.log(myString.replace("World", "Universe")); // Output: "  Hello, Universe!  "
+  console.log(myString.trim());              // Output: "Hello, World!"
+  console.log(myString.startsWith("  "));      // Output: true
+  console.log(myString.endsWith("  "));        // Output: true
+  console.log(myString.includes("Hello"));     // Output: true
+  console.log(myString.split(","));          // Output: [ '  Hello', ' World!  ' ]
+
+  
