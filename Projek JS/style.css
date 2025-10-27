@@ -67,7 +67,15 @@ html {
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  opacity: 0;
+  transform: translateX(30px); 
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+
+.parent.visible {
+    opacity: 1; /* Jadi kelihatan */
+    transform: translateY(0); /* Balik ke posisi normal */
+  }
 
 .div1 {
   grid-area: 1 / 1 / 4 / 6;
