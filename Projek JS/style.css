@@ -117,10 +117,44 @@ html {
 
 .div4 {
   grid-area: 4 / 3 / 5 / 5;
+  background: linear-gradient(
+    114deg,
+    rgba(251, 251, 251, 1) 28%,
+    rgba(255, 49, 49, 0.8) 100%
+  );
+  margin-top: 20px;
+  border-radius: 8px;
+  margin-left: 15px;
 }
+
+.main4 {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .div5 {
   grid-area: 5 / 3 / 6 / 5;
+  margin-left: 40px;
+  margin-top: 20px;
 }
+
 .div6 {
   grid-area: 4 / 5 / 6 / 6;
+  background: linear-gradient(
+    114deg,
+    rgba(251, 251, 251, 1) 28%,
+    rgba(255, 49, 49, 0.8) 100%
+  );
+  margin-right: 35px;
+  margin-top: 22px;
+  margin-bottom: 75px;
+  margin-left: 20px;
+  border-radius: 8px;
+}
+
+.main6 {
+    display: flex;
+    justify-content: right; 
 }
