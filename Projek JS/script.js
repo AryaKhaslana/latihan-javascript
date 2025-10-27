@@ -1,23 +1,54 @@
+// animasi masuk
 document.addEventListener("DOMContentLoaded", () => {
     const elementsToAnimate = document.querySelectorAll('.parent');
   
-    // 2. Siapin si 'mata-mata' (Observer)
     const observer = new IntersectionObserver((entries) => {
-      // 'entries' itu daftar elemen yg lagi diamatin
       entries.forEach(entry => {
         
-        // 3. KALO elemennya kelihatan di layar...
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible'); // Tambahin class .visible
-          observer.unobserve(entry.target); // Berhenti ngamatin (biar hemat)
+          entry.target.classList.add('visible'); 
+          observer.unobserve(entry.target); 
         }
       });
     }, {
-      threshold: 0.1 // Animasi jalan pas 10% elemennya kelihatan
+      threshold: 0.1 
     });
   
-    // 4. Suruh si 'mata-mata' buat ngamatin semua elemen kita
     elementsToAnimate.forEach(el => {
       observer.observe(el);
     });
   });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const elementsToAnimate = document.querySelectorAll('.backgrounds');
+  
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible'); 
+          observer.unobserve(entry.target); 
+        }
+      });
+    }, {
+      threshold: 0.1 
+    });
+  
+    elementsToAnimate.forEach(el => {
+      observer.observe(el);
+    });
+  });
+
+//  sebagai pengaktif scroller
+const swiper = new Swiper('.mySwiper', {
+  
+    effect: 'slide',
+
+    grabCursor: true,
+  
+    scrollbar: {
+      el: '.swiper-scrollbar',
+      draggable: true,
+    },
+  });
+
