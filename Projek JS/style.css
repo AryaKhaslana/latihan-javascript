@@ -249,4 +249,21 @@ html {
   .infos1 {
     display: flex;
     justify-content: space-between;
+    margin-top: 100px;
+  }
+
+  .infos1 img {
+    width: 150px;
+    height: auto;
+    padding: 20px 20px;
+  }
+
+  .info1 {
+    margin-top: 40px;
+  }
+
+  .info1 h1 {
+    font-family: poppins;
+    font-size: 1.3rem;
+    text-align: center;
   }
