@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar DOM JavaScript</title>
+</head>
+<body>
+
+    <h2 id="anjay"></h2>
+    <ul id="menu">
+        <li id="satu">1</li>
+        <li id="dua">2</li>
+        <li id="tiga">3</li>
+    </ul>
+
+    <p id="param">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, veniam, minima quos perspiciatis, quidem nostrum vero error illum nemo voluptatem unde. Possimus natus fuga alias sunt dolore? Ipsam, aliquam sequi.</p>
+
+    <button id="klik">klik</button>
+    <script>
+    // latihan 1
+    console.info(document.title)
+    console.info(document.URL)
+
+    anjay.textContent = 'Latihan DOM'
+
+    // latihan 2
+    const tulisanBaru = document.createElement('li');
+    tulisanBaru.textContent = 'halo';
+
+    const menu = document.getElementById('menu');
+    menu.appendChild(tulisanBaru)
+
+    // latihan 3
+    const param = document.getElementById('param');
+    param.textContent = "DOM itu keren"
+    param.style.color = "red";
+
+    // Dapatkan elemen <p>
+    const myParagraph = document.getElementById('param');
+
+    // Tambahkan atribut title
+    myParagraph.setAttribute('title', 'Ini adalah deskripsi dari paragraf.');
+
+    klik.addEventListener('click', function() {
+        document.body.style.backgroundColor = "yellow";
+    });
+
+    </script>
+</body>
+</html>
+
