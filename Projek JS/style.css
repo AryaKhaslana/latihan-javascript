@@ -246,10 +246,18 @@ html {
 
 /* info */
 
+  .main-info {
+    background-image: url("Screenshot_220.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
   .infos1 {
     display: flex;
     justify-content: space-between;
     margin-top: 100px;
+    margin: 100px;
   }
 
   .infos1 img {
@@ -260,10 +268,68 @@ html {
 
   .info1 {
     margin-top: 40px;
+    background-color: white;
+    border: solid;
+    border-color: grey;
   }
 
   .info1 h1 {
+    padding-top: 30px;
     font-family: poppins;
-    font-size: 1.3rem;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .infos2 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    margin: 100px;
+  }
+
+  .infos2 img {
+    width: 150px;
+    height: auto;
+    padding: 20px 20px;
+  }
+
+  .info2 {
+    margin-top: 40px;
+    background-color: white;
+    border: solid;
+    border-color: grey;
+  }
+
+  .info2 h1 {
+    padding-top: 30px;
+    font-family: poppins;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .infos3 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    margin: 100px;
+  }
+
+  .infos3 img {
+    width: 150px;
+    height: auto;
+    padding: 20px 20px;
+  }
+
+  .info3 {
+    margin-top: 40px;
+    background-color: white;
+    border: solid;
+    border-color: grey;
+  }
+
+  .info3 h1 {
+    padding-top: 30px;
+    font-family: poppins;
+    font-size: 1rem;
     text-align: center;
   }
