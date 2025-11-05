@@ -35,11 +35,11 @@ const email = document.getElementById('email');
 form.addEventListener('submit', function(event) {
     event.preventDefault();
 
-    if(nama == '', email == '')
+    if(nama == '', email == '') {
     alert("input masih kosong")
-    else
+    }else{
     alert("halo " + nama.value + 'email kamu adalah' + email.value)
-
+    }
     nama.value=''
     email.value=''
 })
