@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan dom</title>
+    <style>
+        .kotak {
+            width: 200px;
+            height: 200px;
+            border-radius: 7px;
+            background-color: grey;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <button id="button1">Klik untuk ubah warna !</button>
+    
+    <div class="kotak" id="kotaks"></div>
+
+    <input type="range" min="0" max="100" value="50" id="myRange" oninput="updateValue(this.value)">
+    <p>nilai: <span id="sliderValue">50</span></p>
+
+    <form id="form-notif">
+        <input type="nama" name="nama"  id="name" placeholder="masukkan nama anda : ">
+        <input type="email" name="email" id="email" placeholder="masukkan email anda : ">
+        <button>submit</button>
+    </form>
+
+    <div class="notif" id="pesan-notifikasi"></div>
+
+    <script src="main.js"></script>
+</body>
+</html>
