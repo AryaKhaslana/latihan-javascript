@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: sans-serif;
+            background-color: #fafafa;
+        }
+        .container {
+            padding: 2em;
+            display: grid;
+            place-content: center;
+        }
+        .title {
+            text-align: center;
+        }
+        .search {
+            margin-top: 1em;
+            display: grid;
+            place-content: center;
+        }
+        .search-container {
+            display: grid;
+            place-content: center;
+        }
+        .search-container input {
+            padding: .5em;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            width: 300px;
+        }
+        .search-container input:focus {
+            outline: 1px solid #ddd;
+        }
+        .search-container button {
+            padding: .5em;
+            border: none;
+            background-color: #cacaca;
+            margin-top: .5em;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #fafafa;
+            transition: background-color 0.3s;
+        }
+        .search-container button:hover {
+            background-color: #acacac;
+        }
+        .loading {
+            background-color: #cccccc;
+            margin-top: 1em;
+            padding: 1em;
+            text-align: center;
+            color: #fafafa;
+            border-radius: 5px;
+        }
+        .sekolah-container {
+            margin-top: 1em;
+            background-color: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            padding: 1em;
+            border-radius: 5px;
+        }
+        .sekolah-card {
+            border: 1px solid #ddd;
+            margin-top: .5em;
+            padding: 1em;
+            background-color: #fafafa;
+            border-radius: 5px;
+        }
+        .sekolah-card p {
+            color: #5c5c5c;
+            margin-top: .3em;
+        }
+        .pagination {
+            margin-top: 1em;
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 1em;
+            place-items: center;
+        }
+        .pagination button {
+            padding: .5em;
+            border: none;
+            background-color: #cacaca;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Data Sekolah Indonesia</h1>
+        
+        <div class="search">
+            <div class="search-container">
+                <label for="searchSekolah">Masukan Nama Sekolah:</label>
+                <input type="text" id="searchSekolah">
+                <button onclick="searchSekolah()">Cari Sekolah</button>
+            </div>
+        </div>
+        
+        <div id="loading" class="loading" style="display: none;">Loading...</div>
+        
+        <div class="pagination">
+            <button onclick="sebelumnya()">Halaman Sebelumnya</button>
+            <button onclick="selanjutnya()">Halaman Selanjutnya</button>
+        </div>
+        
+        <div id="list-sekolah"></div>
+        <script>
+            const BASE_URL = 'https://api-sekolah-indonesia.vercel.app';
+            let currentPage = 1;
+            const listSekolah = document.getElementById('list-sekolah');
+            const loading = document.getElementById('loading');
+            
+            const getDataSekolah = async (page) => {
+                try {
+                    loading.style.display = 'block';
+                    listSekolah.innerHTML = '';
+                    
+                    const response = await fetch(`${BASE_URL}/sekolah?page=${page}&perPage=10`);
+                    
+                    if (!response.ok) {
+                        listSekolah.innerHTML = `<p>Error: ${response.status}</p>`;
+                    }
+                    
+                    const responseJson = await response.json();
+                    
+                    if (responseJson.dataSekolah) {
+                        displaySekolah(responseJson.dataSekolah, 'Data Sekolah');
+                    } else {
+                        listSekolah.innerHTML = `<p>Error: ${responseJson.message}</p>`;
+                    }
+                    
+                } catch (error) {
+                    listSekolah.innerHTML = `<p>Error: ${error.message}</p>`;
+                } finally {
+                    loading.style.display = 'none';
+                }
+            };
+            
+            const displaySekolah = (schools, title) => {
+                if (schools.length > 0) {
+                    
+                    let html = `<h2>${title} (Halaman ${currentPage}) - ${schools.length} Sekolah</h2>`;
+                    
+                    schools.forEach(school => {
+                        html += `
+                            <div class="sekolah-card">
+                                <h3>${school.sekolah}</h3>
+                                <p>Bentuk: ${school.bentuk}</p>
+                                <p>Status: <span>${school.status === 'N' ? 'Negeri' : 'Swasta'}</span></p>
+                                <p>Alamat: ${school.alamat_jalan}</p>
+                                <p>Kecamatan: ${school.kecamatan}</p>
+                                <p>Kabupaten: ${school.kabupaten}</p>
+                                <p>Provinsi: ${school.propinsi}</p>
+                            </div>
+                        `;
+                    });
+                    
+                    listSekolah.innerHTML = html;
+                    
+                } else {
+                    listSekolah.innerHTML = '<p>Data Sekolah tidak ditemukan.</p>';
+                }
+            };
+            
+            const selanjutnya = () => {
+                currentPage++;
+                getDataSekolah(currentPage, 'Data Sekolah');
+            };
+            
+            const sebelumnya = () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    getDataSekolah(currentPage, 'Data Sekolah');
+                }
+            };
+            
+            const searchSekolah = async () => {
+                const searchInput = document.getElementById('searchSekolah');
+                const searchTerm = searchInput.value;
+                
+                if (searchTerm.trim() === '') {
+                    getDataSekolah(1, 'Data Sekolah');
+                    return;
+                }
+                
+                const URL = `${BASE_URL}/sekolah/s?sekolah=${encodeURIComponent(searchTerm)}`;
+                
+                try {
+                    loading.style.display = 'block';
+                    listSekolah.innerHTML = '';
+                    
+                    const response = await fetch(URL);
+                    const responseJson = await response.json();
+                    
+                    if (responseJson.dataSekolah) {
+                        displaySekolah(responseJson.dataSekolah, `Hasil Pencarian: "${searchTerm}"`);
+                    } else {
+                        listSekolah.innerHTML = `<p>Tidak ditemukan sekolah dengan nama "${searchTerm}"</p>`;
+                    }
+                    
+                } catch (error) {
+                    listSekolah.innerHTML = `<p>Error: ${error.message}</p>`;
+                } finally {
+                    loading.style.display = 'none';
+                }
+            };
+            
+            document.addEventListener('DOMContentLoaded', () => {
+                getDataSekolah(currentPage);
+            });
+            
+        </script>
+    </body>
+    </html>
+    </div>
