@@ -131,3 +131,21 @@ function ubahTeks() {
   console.log(Boolean(NaN));        // Output: false (falsy)
   console.log(Boolean({}));         // Output: true (truthy) - even an empty object is truthy
   console.log(Boolean([]));         // Output: true (truthy) - even an empty array is truthy
+
+// const hobi =  ['coding, gambar, berenang']
+
+// const [satu, dua, tiga] = hobi;
+
+// console.log(satu)
+// console.log(dua)
+
+const player = {
+  nama: "asep",
+  rank: "glory",
+  usia: 10
+};
+
+const {nama, rank} = player;
+
+console.log(nama)
+console.log(rank)
